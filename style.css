@@ -1,103 +1,133 @@
-/* =========================
-   LOADER
-========================= */
-window.addEventListener("load", () => {
-  document.getElementById("loader").style.display = "none";
-});
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@700&display=swap');
 
-/* =========================
-   CUSTOM CURSOR (DESKTOP)
-========================= */
-const cursor = document.querySelector(".cursor");
-document.addEventListener("mousemove", e => {
-  if (!cursor) return;
-  cursor.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
-});
-
-/* =========================
-   SMOOTH SCROLL ENGINE
-========================= */
-let currentScroll = window.scrollY;
-let targetScroll = currentScroll;
-let ease = 0.08;
-
-function smoothScroll() {
-  targetScroll = window.scrollY;
-  currentScroll += (targetScroll - currentScroll) * ease;
-  window.scrollTo(0, currentScroll);
-  requestAnimationFrame(smoothScroll);
+body {
+  margin: 0;
+  font-family: 'Nunito', sans-serif;
+  color: #fff;
+  background: url('https://wallpaperaccess.com/full/209279.jpg') no-repeat center/cover;
+  overflow-x: hidden;
 }
 
-smoothScroll();
-
-/* =========================
-   SCROLL REVEAL (SMOOTHER)
-========================= */
-const reveals = document.querySelectorAll(".reveal");
-
-function revealOnScroll() {
-  reveals.forEach(el => {
-    const rect = el.getBoundingClientRect();
-    if (rect.top < window.innerHeight - 120) {
-      el.classList.add("active");
-    }
-  });
+#intro {
+  text-align: center;
+  padding: 100px 0;
+  animation: fadeIn 2s ease;
 }
 
-window.addEventListener("scroll", revealOnScroll);
-revealOnScroll();
-
-/* =========================
-   3D TILT CARDS
-========================= */
-document.querySelectorAll(".tilt").forEach(card => {
-  card.addEventListener("mousemove", e => {
-    const r = card.getBoundingClientRect();
-    const x = e.clientX - r.left;
-    const y = e.clientY - r.top;
-
-    const rotateX = -(y - r.height / 2) / 18;
-    const rotateY = (x - r.width / 2) / 18;
-
-    card.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
-  });
-
-  card.addEventListener("mouseleave", () => {
-    card.style.transform = "rotateX(0) rotateY(0)";
-  });
-});
-
-/* =========================
-   TYPING EFFECT
-========================= */
-const text = "Anup Lamichhane";
-let index = 0;
-
-function typingEffect() {
-  if (index < text.length) {
-    document.getElementById("typing").textContent += text[index];
-    index++;
-    setTimeout(typingEffect, 120);
-  }
+#liveTime {
+  position: fixed;
+  top: 10px;
+  right: 20px;
+  font-size: 18px;
+  color: #fff;
+  background: rgba(255, 165, 0, 0.6);
+  padding: 8px 14px;
+  border-radius: 10px;
+  backdrop-filter: blur(6px);
+  font-weight: bold;
+  box-shadow: 0 0 10px orange;
 }
-typingEffect();
 
-/* =========================
-   THEME TOGGLE
-========================= */
-const toggle = document.getElementById("themeToggle");
-toggle.addEventListener("click", () => {
-  document.body.classList.toggle("light");
-  toggle.textContent = document.body.classList.contains("light") ? "☀️" : "🌙";
-});
+.hero {
+  text-align: center;
+  margin-top: -60px;
+}
 
-/* =========================
-   HOVER SOUND
-========================= */
-const sound = document.getElementById("clickSound");
-document.querySelectorAll(".sound").forEach(el => {
-  el.addEventListener("mouseenter", () => {
-    sound.currentTime = 0;
-    sound.play();
-  });
-});
+.chakra-ring img {
+  width: 160px;
+  border-radius: 50%;
+  border: 4px solid orange;
+  animation: spin 10s linear infinite;
+}
+
+.badges span {
+  background: rgba(255,255,255,0.15);
+  padding: 6px 12px;
+  margin: 5px;
+  border-radius: 20px;
+}
+
+.cards {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin: 40px 0;
+}
+
+.card {
+  background: rgba(0,0,0,0.4);
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 0 20px orange;
+  transition: 0.3s;
+}
+
+.card:hover { transform: scale(1.1); }
+
+.glass {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(8px);
+  padding: 30px;
+  margin: 30px auto;
+  border-radius: 20px;
+  width: 80%;
+  box-shadow: 0 0 30px orange;
+}
+
+.skill-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px,1fr));
+  gap: 10px;
+  text-align: center;
+}
+
+#chatbotSection {
+  background: rgba(0, 0, 0, 0.6);
+  margin: 40px auto;
+  width: 80%;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 0 20px orange;
+}
+
+#chatBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#chatLog {
+  background: rgba(255, 255, 255, 0.1);
+  height: 200px;
+  width: 90%;
+  overflow-y: auto;
+  padding: 10px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+#chatInput {
+  width: 70%;
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+}
+
+#sendBtn {
+  padding: 10px 20px;
+  background: orange;
+  border: none;
+  border-radius: 10px;
+  color: black;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+footer {
+  text-align: center;
+  padding: 20px;
+  background: rgba(0,0,0,0.8);
+}
+
+@keyframes fadeIn { from {opacity: 0;} to {opacity: 1;} }
+@keyframes spin { from {transform: rotate(0deg);} to {transform: rotate(360deg);} }
