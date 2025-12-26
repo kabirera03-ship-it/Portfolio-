@@ -1,131 +1,75 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ne">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Anup | Portfolio</title>
-  <link rel="stylesheet" href="style.css"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Krish Era | Naruto Anime Portfolio</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<!-- LOADER -->
-<div id="loader">
-  <div class="loader-ring"></div>
-</div>
 
-<!-- CUSTOM CURSOR -->
-<div class="cursor"></div>
+<!-- LIVE TIME -->
+<div id="liveTime"></div>
 
-<!-- BACKGROUND BLOBS -->
-<div class="blob blob1"></div>
-<div class="blob blob2"></div>
+<!-- BACKGROUND MUSIC -->
+<audio id="bgMusic" src="naruto-music.mp3" autoplay loop></audio>
+<audio id="clickSound" src="click.mp3"></audio>
+<audio id="hoverSound" src="hover.mp3"></audio>
+<audio id="scrollSound" src="scroll.mp3"></audio>
 
 <!-- HERO -->
-<section class="hero reveal">
-  <div class="ring-container">
-    <span class="ring r1"></span>
-    <span class="ring r2"></span>
-    <span class="ring r3"></span>
-    <img src="https://i.ibb.co/Z6W0SMNc/img-1766743750927.jpg">
+<section class="hero">
+  <div class="chakra-ring">
+    <img src="https://i.ibb.co/Z6W0SMNc/img-1766743750927.jpg" alt="Krish Era">
   </div>
 
-  <h1><span id="typing"></span></h1>
-  <p class="subtitle">Web Developer & Digital Creator</p>
+  <h1>Krish Era</h1>
+  <p class="subtitle">Shinobi Web Developer</p>
 
   <div class="badges">
-    <span>📍 Simara, Nepal</span>
+    <span>🍃 Hidden Leaf</span>
     <span>🎓 Student</span>
     <span>💻 Developer</span>
   </div>
 </section>
 
-<!-- ABOUT -->
-<section class="glass reveal tilt">
-  <h2>What I Do</h2>
-  <p>I build modern, animated and responsive websites.</p>
-</section>
-
 <!-- CARDS -->
 <section class="cards">
-  <div class="glass reveal tilt">
-    <h3>💻 Web Developer</h3>
-    <p>Clean UI, animations, performance.</p>
-  </div>
-  <div class="glass reveal tilt">
-    <h3>🌍 Multilingual</h3>
-    <p>Nepali • English • Hindi</p>
-  </div>
+  <div class="card rasengan">💻 Web Developer</div>
+  <div class="card rasengan">🌍 Multilingual</div>
 </section>
 
+
 <!-- SKILLS -->
-<section class="skills reveal">
-  <h2>Skills</h2>
+<section class="glass">
+  <h2>⚔ Ninja Skills</h2>
   <div class="skill-grid">
-    <span>HTML</span><span>CSS</span><span>JS</span>
+    <span>HTML</span><span>CSS</span><span>JavaScript</span>
     <span>UI/UX</span><span>GitHub</span>
   </div>
 </section>
 
-<!-- CONTACT -->
-<section class="contact glass reveal">
-  <h2>Let's Work Together</h2>
-  <div class="buttons">
-    <a class="btn" href="https://instagram.com/anup_eyy" target="_blank">Instagram</a>
-    <a class="btn outline" href="mailto:anuplamichhane08@gmail.com">Email</a>
-  </div>
-</section>
-
-<footer>
-  <p>Made with ❤️ by Anup</p>
-</footer>
-
-<script src="script.js"></script>
-</body>
-</html><section class="cards">
-  <div class="glass">
-    <h3>💻 Web Developer</h3>
-    <p>Responsive layouts, modern UI, clean code.</p>
-  </div>
-
-  <div class="glass">
-    <h3>🌍 Multilingual</h3>
-    <p>Nepali • English • Hindi</p>
-  </div>
-</section>
-
-<!-- SKILLS -->
-<section class="skills">
-  <h2>Skills & Technologies</h2>
-  <div class="skill-grid">
-    <span>HTML</span>
-    <span>CSS</span>
-    <span>JavaScript</span>
-    <span>UI / UX</span>
-    <span>GitHub</span>
-    <span>VS Code</span>
+<!-- CHATBOT -->
+<section id="chatbotSection">
+  <h2>💬 Nepali Chatbot</h2>
+  <div id="chatBox">
+    <div id="chatLog"></div>
+    <input id="chatInput" placeholder="लेख्नुहोस्...">
+    <button id="sendBtn">पठाउनुहोस्</button>
   </div>
 </section>
 
 <!-- CONTACT -->
-<section class="contact glass">
-  <h2>Let's Work Together</h2>
-  <p>Have a project in mind? Let’s create something amazing.</p>
-
+<section class="glass contact">
+  <h2>🤝 Team Up</h2>
   <div class="buttons">
-    <a href="https://www.instagram.com/anup_eyy" target="_blank" class="btn primary">Instagram</a>
-    <a href="mailto:anuplamichhane08@gmail.com" class="btn outline">Email</a>
+    <a href="https://instagram.com/anup_eyy" target="_blank">Instagram</a>
+    <a href="mailto:anuplamichhane08@gmail.com" class="outline">Email</a>
   </div>
 </section>
 
-<!-- FOOTER -->
-<footer>
-  <div class="socials">
-    <a href="https://www.instagram.com/anup_eyy" target="_blank">📸</a>
-    <a href="https://wa.me/9779805569136" target="_blank">💬</a>
-    <a href="https://www.tiktok.com/@galaxyeo4?_r=1&_t=ZS-92Xnxy5y7qa" target="_blank">🎵</a>
-  </div>
-  <p>Made with ❤️ by Anup</p>
-</footer>
+<footer>Made with ❤️ & 🍜 by Krish Era</footer>
 
 <script src="script.js"></script>
 </body>
