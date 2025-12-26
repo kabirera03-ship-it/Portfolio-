@@ -1,196 +1,103 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+/* =========================
+   LOADER
+========================= */
+window.addEventListener("load", () => {
+  document.getElementById("loader").style.display = "none";
+});
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
+/* =========================
+   CUSTOM CURSOR (DESKTOP)
+========================= */
+const cursor = document.querySelector(".cursor");
+document.addEventListener("mousemove", e => {
+  if (!cursor) return;
+  cursor.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
+});
+
+/* =========================
+   SMOOTH SCROLL ENGINE
+========================= */
+let currentScroll = window.scrollY;
+let targetScroll = currentScroll;
+let ease = 0.08;
+
+function smoothScroll() {
+  targetScroll = window.scrollY;
+  currentScroll += (targetScroll - currentScroll) * ease;
+  window.scrollTo(0, currentScroll);
+  requestAnimationFrame(smoothScroll);
 }
 
-html { scroll-behavior: smooth; }
+smoothScroll();
 
-body {
-  background: radial-gradient(circle at top, #0f123a, #000);
-  color: #fff;
-  text-align: center;
+/* =========================
+   SCROLL REVEAL (SMOOTHER)
+========================= */
+const reveals = document.querySelectorAll(".reveal");
+
+function revealOnScroll() {
+  reveals.forEach(el => {
+    const rect = el.getBoundingClientRect();
+    if (rect.top < window.innerHeight - 120) {
+      el.classList.add("active");
+    }
+  });
 }
 
-/* BACKGROUND BLOBS */
-.blob {
-  position: fixed;
-  width: 350px;
-  height: 350px;
-  background: radial-gradient(circle, #7f5cff, transparent);
-  filter: blur(140px);
-  opacity: 0.5;
-  z-index: -1;
-  animation: float 10s infinite alternate;
-}
+window.addEventListener("scroll", revealOnScroll);
+revealOnScroll();
 
-.blob1 { top: 10%; left: 10%; }
-.blob2 { bottom: 10%; right: 10%; animation-duration: 14s; }
+/* =========================
+   3D TILT CARDS
+========================= */
+document.querySelectorAll(".tilt").forEach(card => {
+  card.addEventListener("mousemove", e => {
+    const r = card.getBoundingClientRect();
+    const x = e.clientX - r.left;
+    const y = e.clientY - r.top;
 
-@keyframes float {
-  to { transform: translate(80px, -60px); }
-}
+    const rotateX = -(y - r.height / 2) / 18;
+    const rotateY = (x - r.width / 2) / 18;
 
-/* HERO */
-.hero { padding: 80px 20px; }
+    card.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+  });
 
-.ring-container {
-  position: relative;
-  width: 260px;
-  height: 260px;
-  margin: auto;
-  animation: pulse 2.5s infinite;
-}
+  card.addEventListener("mouseleave", () => {
+    card.style.transform = "rotateX(0) rotateY(0)";
+  });
+});
 
-.ring-container img {
-  width: 150px;
-  height: 150px;
-  border-radius: 50%;
-  object-fit: cover;
-  position: absolute;
-  inset: 0;
-  margin: auto;
-  z-index: 3;
-  border: 6px solid #0f123a;
-  box-shadow:
-    0 0 25px #7f5cff,
-    0 0 50px #ff6aff,
-    0 0 80px #00f8ff;
-}
+/* =========================
+   TYPING EFFECT
+========================= */
+const text = "Anup Lamichhane";
+let index = 0;
 
-/* STRONGER GLOW */
-@keyframes pulse {
-  0% { box-shadow: 0 0 30px #7f5cff; }
-  50% { box-shadow: 0 0 80px #ff6aff; }
-  100% { box-shadow: 0 0 30px #7f5cff; }
-}
-
-/* RINGS */
-.ring {
-  position: absolute;
-  border-radius: 50%;
-  border: 3px solid transparent;
-  animation: spin 8s linear infinite;
-}
-
-.r1 {
-  width: 200px;
-  height: 200px;
-  border-top: 3px solid #7f5cff;
-}
-
-.r2 {
-  width: 230px;
-  height: 230px;
-  border-right: 3px solid #ff6aff;
-  animation-duration: 10s;
-}
-
-.r3 {
-  width: 260px;
-  height: 260px;
-  border-left: 3px solid #00f8ff;
-  animation-duration: 12s;
-}
-
-@keyframes spin {
-  to { transform: rotate(360deg); }
-}
-
-/* TEXT */
-h1 {
-  margin-top: 20px;
-  font-size: 2.4rem;
-  background: linear-gradient(90deg, #7f5cff, #ff6aff);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.subtitle { opacity: 0.8; }
-
-.badges span {
-  display: inline-block;
-  margin: 6px;
-  padding: 8px 18px;
-  background: rgba(255,255,255,0.1);
-  border-radius: 20px;
-  font-size: 0.9rem;
-}
-
-/* GLASS */
-.glass {
-  background: rgba(255,255,255,0.08);
-  backdrop-filter: blur(14px);
-  border-radius: 20px;
-  padding: 24px;
-  margin: 20px;
-  position: relative;
-  overflow: hidden;
-}
-
-.glass::before {
-  content: "";
-  position: absolute;
-  width: 200px;
-  height: 200px;
-  background: radial-gradient(circle, rgba(127,92,255,0.3), transparent);
-  top: var(--y);
-  left: var(--x);
-  transform: translate(-50%, -50%);
-  pointer-events: none;
-}
-
-/* CARDS */
-.cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 20px;
-  padding: 20px;
-}
-
-/* SKILLS */
-.skill-grid span {
-  display: inline-block;
-  margin: 8px;
-  padding: 10px 18px;
-  background: rgba(255,255,255,0.1);
-  border-radius: 20px;
-}
-
-/* BUTTONS */
-.buttons .btn {
-  padding: 14px 30px;
-  border-radius: 30px;
-  text-decoration: none;
-  background: linear-gradient(135deg, #7f5cff, #ff6aff);
-  color: white;
-  font-weight: 500;
-}
-
-.buttons .outline {
-  background: transparent;
-  border: 2px solid #7f5cff;
-}
-
-/* FOOTER */
-footer { margin: 40px 0; opacity: 0.7; }
-
-.socials a {
-  margin: 0 10px;
-  font-size: 1.4rem;
-}
-
-/* SCROLL REVEAL */
-.reveal {
-  opacity: 0;
-  transform: translateY(40px);
-  transition: 0.8s ease;
-}
-
-.reveal.active {
-  opacity: 1;
-  transform: translateY(0);
+function typingEffect() {
+  if (index < text.length) {
+    document.getElementById("typing").textContent += text[index];
+    index++;
+    setTimeout(typingEffect, 120);
   }
+}
+typingEffect();
+
+/* =========================
+   THEME TOGGLE
+========================= */
+const toggle = document.getElementById("themeToggle");
+toggle.addEventListener("click", () => {
+  document.body.classList.toggle("light");
+  toggle.textContent = document.body.classList.contains("light") ? "☀️" : "🌙";
+});
+
+/* =========================
+   HOVER SOUND
+========================= */
+const sound = document.getElementById("clickSound");
+document.querySelectorAll(".sound").forEach(el => {
+  el.addEventListener("mouseenter", () => {
+    sound.currentTime = 0;
+    sound.play();
+  });
+});
