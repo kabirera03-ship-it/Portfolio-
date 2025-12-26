@@ -1,20 +1,31 @@
-// Scroll reveal
-const reveals = document.querySelectorAll(".reveal");
+// LIVE TIME
+function updateTime() {
+  const now = new Date();
+  document.getElementById("liveTime").textContent = now.toLocaleTimeString();
+}
+setInterval(updateTime, 1000);
 
-window.addEventListener("scroll", () => {
-  reveals.forEach(el => {
-    const top = el.getBoundingClientRect().top;
-    if (top < window.innerHeight - 100) {
-      el.classList.add("active");
-    }
-  });
-});
+// SOUND EFFECTS
+document.addEventListener("click", () => document.getElementById("clickSound").play());
+document.addEventListener("mouseover", () => document.getElementById("hoverSound").play());
+window.addEventListener("scroll", () => document.getElementById("scrollSound").play());
 
-// Mouse glow on glass cards
-document.querySelectorAll(".glass").forEach(card => {
-  card.addEventListener("mousemove", e => {
-    const rect = card.getBoundingClientRect();
-    card.style.setProperty("--x", `${e.clientX - rect.left}px`);
-    card.style.setProperty("--y", `${e.clientY - rect.top}px`);
+// CHATBOT
+const sendBtn = document.getElementById("sendBtn");
+const chatInput = document.getElementById("chatInput");
+const chatLog = document.getElementById("chatLog");
+
+sendBtn.addEventListener("click", async () => {
+  const message = chatInput.value.trim();
+  if (!message) return;
+  chatLog.innerHTML += `<div><b>तिमी:</b> ${message}</div>`;
+  chatInput.value = "";
+  const res = await fetch("/chat", {
+    method: "POST",
+    headers: {"Content-Type":"application/json"},
+    body: JSON.stringify({message})
   });
+  const data = await res.json();
+  chatLog.innerHTML += `<div><b>AI:</b> ${data.reply}</div>`;
+  chatLog.scrollTop = chatLog.scrollHeight;
 });
