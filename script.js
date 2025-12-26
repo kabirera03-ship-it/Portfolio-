@@ -22,7 +22,7 @@ window.addEventListener("scroll", () => {
 });
 
 // TYPING
-const text = "Anup Lamichhane";
+const text = "Krish Era";
 let i = 0;
 setInterval(() => {
   if (i < text.length) {
@@ -30,7 +30,7 @@ setInterval(() => {
   }
 }, 120);
 
-// THEME TOGGLE
+// THEME
 const toggle = document.getElementById("themeToggle");
 toggle.onclick = () => {
   document.body.classList.toggle("light");
@@ -39,18 +39,8 @@ toggle.onclick = () => {
 
 // LIVE TIME
 const liveTime = document.getElementById("liveTime");
-function updateTime() {
-  const now = new Date();
-  liveTime.innerHTML = `⏰ ${now.toLocaleTimeString()}`;
+function updateTime(){
+  liveTime.innerHTML = `⏰ ${new Date().toLocaleTimeString()}`;
 }
-setInterval(updateTime, 1000);
+setInterval(updateTime,1000);
 updateTime();
-
-// AUDIO
-const audio = document.getElementById("clickSound");
-document.querySelectorAll(".sound").forEach(el => {
-  el.addEventListener("click", () => {
-    audio.currentTime = 0;
-    audio.play();
-  });
-});
