@@ -1,23 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Anup | Portfolio</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
 
+<!-- LOADER -->
+<div id="loader">
+  <div class="loader-ring"></div>
+</div>
+
+<!-- CUSTOM CURSOR -->
+<div class="cursor"></div>
+
+<!-- BACKGROUND BLOBS -->
+<div class="blob blob1"></div>
+<div class="blob blob2"></div>
+
 <!-- HERO -->
-<section class="hero">
+<section class="hero reveal">
   <div class="ring-container">
     <span class="ring r1"></span>
     <span class="ring r2"></span>
     <span class="ring r3"></span>
-    <img src="https://i.ibb.co/Z6W0SMNc/img-1766743750927.jpg" alt="Profile">
+    <img src="https://i.ibb.co/Z6W0SMNc/img-1766743750927.jpg">
   </div>
 
-  <h1>Anup Lamichhane</h1>
+  <h1><span id="typing"></span></h1>
   <p class="subtitle">Web Developer & Digital Creator</p>
 
   <div class="badges">
@@ -28,13 +40,48 @@
 </section>
 
 <!-- ABOUT -->
-<section class="glass">
+<section class="glass reveal tilt">
   <h2>What I Do</h2>
-  <p>I build modern, responsive websites with clean UI and smooth animations.</p>
+  <p>I build modern, animated and responsive websites.</p>
 </section>
 
 <!-- CARDS -->
 <section class="cards">
+  <div class="glass reveal tilt">
+    <h3>💻 Web Developer</h3>
+    <p>Clean UI, animations, performance.</p>
+  </div>
+  <div class="glass reveal tilt">
+    <h3>🌍 Multilingual</h3>
+    <p>Nepali • English • Hindi</p>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section class="skills reveal">
+  <h2>Skills</h2>
+  <div class="skill-grid">
+    <span>HTML</span><span>CSS</span><span>JS</span>
+    <span>UI/UX</span><span>GitHub</span>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact glass reveal">
+  <h2>Let's Work Together</h2>
+  <div class="buttons">
+    <a class="btn" href="https://instagram.com/anup_eyy" target="_blank">Instagram</a>
+    <a class="btn outline" href="mailto:anuplamichhane08@gmail.com">Email</a>
+  </div>
+</section>
+
+<footer>
+  <p>Made with ❤️ by Anup</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html><section class="cards">
   <div class="glass">
     <h3>💻 Web Developer</h3>
     <p>Responsive layouts, modern UI, clean code.</p>
