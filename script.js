@@ -22,7 +22,7 @@ window.addEventListener("scroll", () => {
 });
 
 // TYPING
-const text = "Anup Lamichhane";
+const text = "Krish Era";
 let i = 0;
 setInterval(() => {
   if (i < text.length) {
